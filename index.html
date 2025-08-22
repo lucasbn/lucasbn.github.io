@@ -1,1 +1,72 @@
 Hello World
+
+---
+
+Default to automation (22/08/2025)
+
+Top line
+
+If something has to be done more than once then you should automate it
+and if you're not sure then you should automate it.
+
+What is "something"?
+
+- Running any kind of experiments
+- Setting up a development environment (e.g. installing dependencies)
+- Applying updates to a system
+- Building or releasing anything (CI/CD ?)
+
+Story time
+
+The evaluation of my thesis involved comparing my own Kubernetes CNI to several
+other CNIs with benchmarking tools like iperf3, wrk2 and netperf. 
+
+My test bed consisted of two directly connected cloud machines. On each machine
+I had to perform the following: (i) install my custom kernel, (ii) install
+Kubernetes (master/agent) and any dependencies (iii) configure a particular CNI.
+After doing this, I had to (i) deploy a particular set of pods, (ii) exec into
+those pods and run a particular script on each (iii) copy the results over to my
+host machine.
+
+This was a super tedious process that would end up taking at least an hour for
+each CNI I was evaluating, not including any time spent painfully debugging some
+issue caused by my inevitable messing up of something somewhere.
+
+I was naive enough to believe that I would only have to go through this process
+once. Of course, I actually ended up doing this around 10-20 times.
+
+Because I needed to manually run some commands every 30-60 minutes to kick off
+the next experiment or setup another CNI, I ended up just sitting around
+watching Netflix or reading my book whilst waiting for each experiment to
+finish. At the time I told myself "I'm exhausted and this way I can relax a bit
+whilst still getting the results". But it wasn't relaxing at all: my brain was
+constantly switched on, and I was constantly checking on the experiment to make
+sure the results were inline with my expectations.
+
+Looking back, this was the worst thing I could've done: I wasn't really doing
+anything "productive" in that time and I also wasn't relaxing. I probably lost
+between 50 and 100 hours doing this.
+
+Ideally, I would've automated this process to require a single push of a button
+and then for all the results to be saved on my host machine automatically. This
+way, I could've gone and done something actually relaxing for a few hours (like
+playing golf or tennis). Or, I could've let the experiment run in the background
+whilst I work on another part of the project (or a completely different
+project). 
+
+The other big benefit is that when you want to change your experiment, you can
+do so very quickly and without much hassle. Near the deadline, we realised it
+would be nice to widen the scope of one of the benchmarks but couldn't because
+it would take too long to set everything up. If this was automated, we probably
+would have been able to.
+
+I think the "idea" here is super obvious, but I think the challenge is being
+able to have the foresight to realise when to automate something and stop
+yourself from taking the path that is slightly easier in the short-term but much
+more tedious in the long term.
+
+Going forward, I'm going to try to "default towards automation" rather than
+"default towards manual work" and see where that gets me. Plus, with ChatGPT and
+vibe-coding automating things has never been easier.
+
+---
